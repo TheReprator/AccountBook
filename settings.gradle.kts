@@ -11,25 +11,7 @@ pluginManagement {
         google()
         mavenCentral()
     }
-
-    plugins {
-        val kotlinVersion = extra["kotlin.version"] as String
-        val agpVersion = extra["agp.version"] as String
-        val composeVersion = extra["compose.version"] as String
-
-        kotlin("jvm").version(kotlinVersion)
-        kotlin("multiplatform").version(kotlinVersion)
-        kotlin("android").version(kotlinVersion)
-
-        id("com.android.application").version(agpVersion)
-        id("com.android.library").version(agpVersion)
-
-        id("org.jetbrains.compose").version(composeVersion)
-    }
 }
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
-
 
 dependencyResolutionManagement {
     repositories {
