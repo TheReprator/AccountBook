@@ -30,6 +30,15 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.serialization.json)
+                implementation(libs.ktor.client.json)
+                implementation(libs.ktor.client.logging)
+                implementation(libs.ktor.client.content.negotiation)
+
+                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.kotlinx.serialization.core)
+
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material)
@@ -37,11 +46,14 @@ kotlin {
                 implementation(compose.components.resources)
             }
         }
+
         val androidMain by getting {
             dependencies {
                 api(libs.androidx.activity.compose)
                 api(libs.androidx.appcompat)
                 api(libs.androidx.core)
+
+                implementation(libs.ktor.client.android)
             }
         }
         val iosX64Main by getting
@@ -52,10 +64,16 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+
+            dependencies{
+                implementation(libs.ktor.client.darwin)
+            }
         }
+
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.common)
+                implementation(libs.ktor.client.java)
             }
         }
     }
