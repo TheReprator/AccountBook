@@ -9,6 +9,7 @@ pluginManagement {
         gradlePluginPortal()
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
         google()
+        mavenCentral()
     }
 
     plugins {
@@ -26,6 +27,9 @@ pluginManagement {
         id("org.jetbrains.compose").version(composeVersion)
     }
 }
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
+
 
 dependencyResolutionManagement {
     repositories {
