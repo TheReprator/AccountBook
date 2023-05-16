@@ -14,12 +14,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import dev.reprator.common.datasource.remote.SplashDataSourceRemoteImpl
+import dev.reprator.common.datasource.remote.mapper.SplashMapper
+import dev.reprator.common.util.ApiClient
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun App() {
+
     MaterialTheme {
         var greetingText by remember { mutableStateOf("Hello, World!") }
         var showImage by remember { mutableStateOf(false) }
@@ -38,6 +42,13 @@ fun App() {
             }
         }
     }
+}
+
+
+fun start() {
+    val mapper = SplashMapper()
+    val test = SplashDataSourceRemoteImpl(ApiClient.client, mapper)
+    test.start()
 }
 
 expect fun getPlatformName(): String

@@ -10,7 +10,7 @@ class SplashMapper: Mapper<SplashEntity, SplashModal> {
     override suspend fun map(from: SplashEntity): SplashModal {
 
         val languageList = from.languageList?.map {
-            LanguageModal(it.id ?: 0, it.name.orEmpty())
+            LanguageModal(it?.id ?: 0, it?.name.orEmpty())
         } ?: emptyList()
 
         val imageList: List<String> = from.imageList?.filterNotNull() ?: emptyList()

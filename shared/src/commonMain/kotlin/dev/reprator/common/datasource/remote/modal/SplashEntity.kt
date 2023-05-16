@@ -4,15 +4,15 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class SplashEntity(val imageList:List<String?>?, val languageList: List<LanguageEntity>?)
+data class SplashEntity(@SerialName("imageList") val imageList:List<String?>?, @SerialName("languageList") val languageList: List<LanguageEntity?>?)
 
 @Serializable
-data class LanguageEntity(val id: Int?, val name: String?)
+data class LanguageEntity(@SerialName("id") val id: Int?, @SerialName("name") val name: String?)
 
 @Serializable
-data class DataResponseContainer<T>(@SerialName("data")  val data: T,
-                                    @SerialName("statusCode") val statusCode: Int,
-                                    @SerialName("message")  val message: String)
+data class DataResponseContainer(@SerialName("data")  val data: SplashEntity?,
+                                    @SerialName("statusCode") val statusCode: Int?,
+                                    @SerialName("message")  val message: String?)
 
 /*
 
