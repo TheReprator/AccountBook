@@ -84,6 +84,7 @@ kotlin {
             dependencies {
                 implementation(compose.desktop.common)
                 implementation(libs.ktor.client.java)
+                implementation(libs.kotlinx.coroutines.swing)
             }
         }
     }
