@@ -19,9 +19,6 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 
-private const val BASE_URL = "http://192.168.0.186:8080"
-
-
 class SplashDataSourceRemoteImpl(private val httpClient: HttpClient, private val mapper: SplashMapper): SplashRemoteDataSource {
 
     val coroutineScope: CoroutineScope = MainScope()
@@ -38,7 +35,7 @@ class SplashDataSourceRemoteImpl(private val httpClient: HttpClient, private val
 
     private suspend fun splashDataApi(): AppResult<SplashModal> {
 
-        val dataRequest = httpClient.get("$BASE_URL/splash").toResult<DataResponseContainer<SplashEntity>>()
+        val dataRequest = httpClient.get("splash").toResult<DataResponseContainer<SplashEntity>>()
 
         val result = when (dataRequest) {
             is AppSuccess -> {
