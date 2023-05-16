@@ -1,5 +1,6 @@
 plugins {
     id(libs.plugins.kotlin.multiplatform.get().pluginId)
+    kotlin("plugin.serialization") version "1.8.21"
     id(libs.plugins.kotlin.native.cocoapods.get().pluginId)
     id(libs.plugins.android.library.get().pluginId)
     id(libs.plugins.jb.compose.get().pluginId)
@@ -31,10 +32,10 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(libs.ktor.client.core)
-                implementation(libs.ktor.client.serialization.json)
                 implementation(libs.ktor.client.json)
                 implementation(libs.ktor.client.logging)
                 implementation(libs.ktor.client.content.negotiation)
+                implementation(libs.ktor.client.serialization.json)
 
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.kotlinx.serialization.core)
@@ -47,6 +48,14 @@ kotlin {
             }
         }
 
+        val commonTest by getting {
+            dependencies {
+                implementation(libs.kotlinx.coroutines.test)
+                implementation(kotlin("test-common"))
+                implementation(kotlin("test-annotations-common"))
+            }
+        }
+
         val androidMain by getting {
             dependencies {
                 api(libs.androidx.activity.compose)
@@ -56,6 +65,7 @@ kotlin {
                 implementation(libs.ktor.client.android)
             }
         }
+
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting

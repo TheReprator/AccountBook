@@ -1,5 +1,5 @@
 [versions]
-agp = "7.4.2"
+agp = "8.0.1"
 accompanist = "0.30.1"
 androidxlifecycle = "2.6.1"
 composecompiler = "1.4.0"
@@ -13,6 +13,7 @@ targetSdk = "31"
 [plugins]
 kotlin-native-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 jb-compose = { id = "org.jetbrains.compose", version.ref = "composecompiler" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
