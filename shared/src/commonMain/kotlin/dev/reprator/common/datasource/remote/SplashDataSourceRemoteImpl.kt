@@ -35,9 +35,10 @@ class SplashDataSourceRemoteImpl(private val httpClient: HttpClient, private val
             }
         }
     }
+
     private suspend fun splashDataApi(): AppResult<SplashModal> {
 
-        val dataRequest = httpClient.get("$BASE_URL/splash").toResult<DataResponseContainer>()
+        val dataRequest = httpClient.get("$BASE_URL/splash").toResult<DataResponseContainer<SplashEntity>>()
 
         val result = when (dataRequest) {
             is AppSuccess -> {
@@ -45,7 +46,7 @@ class SplashDataSourceRemoteImpl(private val httpClient: HttpClient, private val
             }
 
             is AppError -> {
-                AppError(message = dataRequest.message, throwable = dataRequest.throwable)
+                AppError(message = dataRequest.message ?: dataRequest.throwable?.cause?.message, throwable = dataRequest.throwable)
             }
         }
         return result

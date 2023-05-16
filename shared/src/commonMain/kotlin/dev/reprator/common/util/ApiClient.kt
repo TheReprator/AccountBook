@@ -23,9 +23,10 @@ object ApiClient {
 
         install(ContentNegotiation) {
             json(Json {
+                explicitNulls = false
+                ignoreUnknownKeys = true
                 prettyPrint = true
                 isLenient = true
-                ignoreUnknownKeys = true
             })
         }
 

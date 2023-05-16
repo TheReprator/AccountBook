@@ -1,6 +1,6 @@
 plugins {
     id(libs.plugins.kotlin.multiplatform.get().pluginId)
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.21"
+    id(libs.plugins.kotlin.serialization.get().pluginId) version libs.plugins.kotlin.serialization.get().version.requiredVersion
     id(libs.plugins.kotlin.native.cocoapods.get().pluginId)
     id(libs.plugins.android.library.get().pluginId)
     id(libs.plugins.jb.compose.get().pluginId)
