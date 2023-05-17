@@ -18,6 +18,8 @@ object ApiClient {
 
     val client = HttpClient {
 
+        install(DataTransformationPlugin)
+
         install(HttpTimeout) {
             val timeout = 30000L
             connectTimeoutMillis = timeout

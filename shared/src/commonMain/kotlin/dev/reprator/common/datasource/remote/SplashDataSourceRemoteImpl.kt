@@ -2,7 +2,6 @@ package dev.reprator.common.datasource.remote
 
 import dev.reprator.common.data.dataSource.SplashRemoteDataSource
 import dev.reprator.common.datasource.remote.mapper.SplashMapper
-import dev.reprator.common.datasource.remote.modal.DataResponseContainer
 import dev.reprator.common.datasource.remote.modal.SplashEntity
 import dev.reprator.common.modal.SplashModal
 import dev.reprator.common.util.AppError
@@ -35,11 +34,11 @@ class SplashDataSourceRemoteImpl(private val httpClient: HttpClient, private val
 
     private suspend fun splashDataApi(): AppResult<SplashModal> {
 
-        val dataRequest = httpClient.get("splash").toResult<DataResponseContainer<SplashEntity>>()
+        val dataRequest = httpClient.get("splash").toResult<SplashEntity>()
 
         val result = when (dataRequest) {
             is AppSuccess -> {
-                AppSuccess(mapper.map(dataRequest.data.data!!))
+                AppSuccess(mapper.map(dataRequest.data))
             }
 
             is AppError -> {

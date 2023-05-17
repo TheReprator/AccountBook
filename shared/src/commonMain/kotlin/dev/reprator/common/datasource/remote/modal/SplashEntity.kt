@@ -10,7 +10,7 @@ data class SplashEntity(val imageList:List<String?>?, val languageList: List<Lan
 data class LanguageEntity(val id: Int?, val name: String?)
 
 @Serializable
-data class DataResponseContainer<T>(@SerialName("data")  val data: T?,
+data class DataResponseContainer<out T>(@SerialName("data")  val data: T?,
                                     val statusCode: Int?,
                                     val message: String?)
 
