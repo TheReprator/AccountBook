@@ -1,9 +1,27 @@
+@file:Suppress("UnstableApiUsage", "UNUSED_VARIABLE")
+
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+import org.gradle.api.tasks.testing.logging.TestLogEvent.*
+
 plugins {
     id(libs.plugins.kotlin.multiplatform.get().pluginId)
     id(libs.plugins.kotlin.serialization.get().pluginId) version libs.plugins.kotlin.serialization.get().version.requiredVersion
     id(libs.plugins.kotlin.native.cocoapods.get().pluginId)
     id(libs.plugins.android.library.get().pluginId)
     id(libs.plugins.jb.compose.get().pluginId)
+}
+
+android {
+    compileSdk = libs.versions.compileSdk.get().toInt()
+    namespace = "dev.reprator.common"
+
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    sourceSets["main"].res.srcDirs("src/androidMain/res")
+    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
+
+    defaultConfig {
+        minSdk = libs.versions.minSdk.get().toInt()
+    }
 }
 
 kotlin {
@@ -51,8 +69,7 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(libs.kotlinx.coroutines.test)
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
+                implementation(kotlin("test"))
             }
         }
 
@@ -65,6 +82,8 @@ kotlin {
                 implementation(libs.ktor.client.android)
             }
         }
+
+        val androidUnitTest by getting
 
         val iosX64Main by getting
         val iosArm64Main by getting
@@ -80,6 +99,16 @@ kotlin {
             }
         }
 
+        val iosX64Test by getting
+        val iosArm64Test by getting
+        val iosSimulatorArm64Test by getting
+        val iosTest by creating {
+            dependsOn(commonTest)
+            iosX64Test.dependsOn(this)
+            iosArm64Test.dependsOn(this)
+            iosSimulatorArm64Test.dependsOn(this)
+        }
+
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.common)
@@ -87,25 +116,17 @@ kotlin {
                 implementation(libs.kotlinx.coroutines.swing)
             }
         }
+
+        val desktopTest by getting
     }
 }
 
-android {
-    compileSdk = libs.versions.compileSdk.get().toInt()
-    namespace = "dev.reprator.common"
-
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    sourceSets["main"].res.srcDirs("src/androidMain/res")
-    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
-
-    defaultConfig {
-        minSdk = libs.versions.minSdk.get().toInt()
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlin {
-        jvmToolchain(11)
+tasks.withType<Test> {
+    testLogging {
+        events(STARTED, PASSED, SKIPPED, FAILED, STANDARD_OUT, STANDARD_ERROR)
+        exceptionFormat = FULL
+        showExceptions = true
+        showCauses = true
+        showStackTraces = true
     }
 }

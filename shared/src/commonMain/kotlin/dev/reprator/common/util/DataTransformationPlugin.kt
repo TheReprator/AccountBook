@@ -1,6 +1,5 @@
 package dev.reprator.common.util
 
-import dev.reprator.common.datasource.remote.modal.Event
 import dev.reprator.common.datasource.remote.modal.SplashEntity
 import io.ktor.client.plugins.api.createClientPlugin
 import io.ktor.client.statement.HttpResponseContainer
@@ -27,6 +26,5 @@ val DataTransformationPlugin = createClientPlugin(name = "DataTransformationPlug
             // val tp= Json(JsonConfiguration()).parse(Error.serializer(), it)
         }
         //throw IllegalArgumentException("not a parsable error")
-    }
 
 }
