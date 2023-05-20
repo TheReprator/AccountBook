@@ -1,4 +1,4 @@
-package dev.reprator.common.data.dataSourceImpl
+package dev.reprator.common
 
 import kotlin.test.Test
 import kotlin.test.assertTrue

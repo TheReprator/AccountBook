@@ -1,0 +1,15 @@
+{
+  "statusCode": 200,
+  "data": {
+    "imageList": [
+      "/Users/vikramsingh/Desktop/code/backend/Khatabook/splashFileDirectory/one.png"
+    ],
+    "languageList": [
+      {
+        "type": "LanguageModal$DTO",
+        "id": 9,
+        "name": "English"
+      }
+    ]
+  }
+}

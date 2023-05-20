@@ -1,6 +1,8 @@
 package dev.reprator.common.util
 
 import io.ktor.client.*
+import io.ktor.client.engine.HttpClientEngineConfig
+import io.ktor.client.engine.HttpClientEngineFactory
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.HttpTimeout
@@ -17,9 +19,13 @@ import kotlinx.serialization.json.Json
 
 object TestApiClient {
 
-    val client = HttpClient(MockEngine) {
+    fun <T : HttpClientEngineConfig> createHttpClient(
+        engineFactory: HttpClientEngineFactory<T>,
+        block: T.() -> Unit,
+    ): HttpClient = HttpClient(engineFactory) {
 
-        install(DataTransformationPlugin)
+        engine(block)
+
 
         install(HttpTimeout) {
             val timeout = 30000L
