@@ -46,9 +46,7 @@ fun App() {
 
 
 fun start() {
-   /* val mapper = SplashMapper()
-    val test = SplashDataSourceRemoteImpl(ApiClient.client, mapper)
-    test.start()*/
+
 }
 
 expect fun getPlatformName(): String

@@ -70,5 +70,6 @@ class BasicTest {
 
         val result = splashRemote.splashRemoteDataSource().first()
         assertTrue(result is AppSuccess)
+        assertTrue(result.data.languageList.first().name =="vikram")
     }
 }

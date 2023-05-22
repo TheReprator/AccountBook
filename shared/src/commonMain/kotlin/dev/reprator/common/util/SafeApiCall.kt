@@ -3,14 +3,13 @@ package dev.reprator.common.util
 import io.ktor.client.call.body
 import io.ktor.client.plugins.ResponseException
 import io.ktor.client.statement.HttpResponse
+import io.ktor.http.isSuccess
 
 fun HttpResponse.toException() = ResponseException(this, toString())
 
 suspend inline fun <reified T> HttpResponse.toResult(): AppResult<T> = try {
-    val code = status.value
-    val isSuccessFull = code in 200..299
 
-    if (isSuccessFull) {
+    if (status.isSuccess()) {
         AppSuccess(data = body())
     } else {
         AppError(toException())
