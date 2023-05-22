@@ -12,46 +12,26 @@ import dev.reprator.common.util.AppSuccess
 import dev.reprator.common.util.safeApiCall
 import dev.reprator.common.util.toResult
 import io.ktor.client.HttpClient
-import io.ktor.client.call.body
 import io.ktor.client.request.get
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class SplashDataSourceRemoteImpl(private val httpClient: HttpClient,
                                  private val appCoroutineDispatchers: AppCoroutineDispatchers,
                                  private val mapper: SplashMapper): SplashRemoteDataSource {
 
-   // val coroutineScope: CoroutineScope = MainScope()
-
-    fun start() {
-        /*coroutineScope.launch {
-            splashRemoteDataSource().catch {
-                println("${it.message} vikram")
-            }.collect {
-                println("${it} vikram result")
-            }
-        }*/
-    }
-
     private suspend fun splashDataApi(): AppResult<SplashModal> = withContext(appCoroutineDispatchers.io){
 
-        val dataRequest = httpClient.get("splash").body<DataResponseContainer<SplashEntity>>()
-
-        val result = when (dataRequest) {
+        return@withContext when (val dataRequest = httpClient.get("splash").toResult<DataResponseContainer<SplashEntity>>()) {
             is AppSuccess -> {
-                AppSuccess(mapper.map(dataRequest.data))
+                AppSuccess(mapper.map(dataRequest.data.data!!))
             }
 
             is AppError -> {
                 AppError(message = dataRequest.message ?: dataRequest.throwable?.cause?.message, throwable = dataRequest.throwable)
             }
         }
-        result
     }
 
     override suspend fun splashRemoteDataSource(): Flow<AppResult<SplashModal>> {

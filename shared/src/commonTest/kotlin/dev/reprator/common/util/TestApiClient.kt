@@ -1,7 +1,5 @@
 package dev.reprator.common.util
 
-import dev.reprator.common.datasource.remote.modal.DataResponseContainer
-import dev.reprator.common.datasource.remote.modal.Response
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.HttpClientEngineConfig
 import io.ktor.client.engine.HttpClientEngineFactory
@@ -15,12 +13,7 @@ import io.ktor.client.request.header
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.serialization.kotlinx.json.json
-import kotlinx.serialization.PolymorphicSerializer
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.Json.Default.serializersModule
-import kotlinx.serialization.modules.SerializersModule
-import kotlinx.serialization.modules.polymorphic
-import kotlinx.serialization.modules.subclass
 
 
 object TestApiClient {
@@ -30,15 +23,7 @@ object TestApiClient {
         block: T.() -> Unit,
     ): HttpClient = HttpClient(engineFactory) {
 
-        val module = SerializersModule {
-            polymorphic(Response::class) {
-                subclass(DataResponseContainer.serializer(PolymorphicSerializer(Any::class)))
-            }
-        }
-
         engine(block)
-
-        install(DataTransformationPlugin)
 
         install(HttpTimeout) {
             val timeout = 30000L
@@ -54,8 +39,6 @@ object TestApiClient {
                 ignoreUnknownKeys = true
                 prettyPrint = true
                 isLenient = true
-
-                serializersModule = module
             })
         }
 
