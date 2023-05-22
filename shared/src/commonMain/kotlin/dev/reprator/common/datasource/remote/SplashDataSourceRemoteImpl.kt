@@ -12,6 +12,7 @@ import dev.reprator.common.util.AppSuccess
 import dev.reprator.common.util.safeApiCall
 import dev.reprator.common.util.toResult
 import io.ktor.client.HttpClient
+import io.ktor.client.call.body
 import io.ktor.client.request.get
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
@@ -39,11 +40,11 @@ class SplashDataSourceRemoteImpl(private val httpClient: HttpClient,
 
     private suspend fun splashDataApi(): AppResult<SplashModal> = withContext(appCoroutineDispatchers.io){
 
-        val dataRequest = httpClient.get("splash").toResult<DataResponseContainer<SplashEntity>>()
+        val dataRequest = httpClient.get("splash").body<DataResponseContainer<SplashEntity>>()
 
         val result = when (dataRequest) {
             is AppSuccess -> {
-                AppSuccess(mapper.map(dataRequest.data.data!!))
+                AppSuccess(mapper.map(dataRequest.data))
             }
 
             is AppError -> {
