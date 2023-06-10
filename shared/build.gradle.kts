@@ -1,82 +1,58 @@
+@file:OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
 import org.gradle.api.tasks.testing.logging.TestLogEvent.*
 
 plugins {
-    id(libs.plugins.kotlin.multiplatform.get().pluginId)
-    id(libs.plugins.kotlin.serialization.get().pluginId) version libs.plugins.kotlin.serialization.get().version.requiredVersion
-    id(libs.plugins.kotlin.native.cocoapods.get().pluginId)
-    id(libs.plugins.android.library.get().pluginId)
-    id(libs.plugins.jb.compose.get().pluginId)
+    kotlin("multiplatform")
+    id("com.android.library")
+    id("org.jetbrains.compose")
+    id("kotlin-parcelize")
+    kotlin("plugin.serialization")
 }
 
-android {
-    compileSdk = libs.versions.compileSdk.get().toInt()
-    namespace = "dev.reprator.common"
-
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    sourceSets["main"].res.srcDirs("src/androidMain/res")
-    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
-
-    defaultConfig {
-        minSdk = libs.versions.minSdk.get().toInt()
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlin {
-        jvmToolchain(17)
-    }
+// TODO: Remove once a compiler with support for >1.8.21 available
+compose {
+    kotlinCompilerPlugin.set(dependencies.compiler.forKotlin("1.8.20"))
+    kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.8.21")
 }
 
 kotlin {
-    android {
+    android()
+
+    jvm("desktop") {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "17"
+                jvmTarget = "15"
             }
         }
     }
-
-    android()
-
-    jvm("desktop")
 
     iosX64()
     iosArm64()
     iosSimulatorArm64()
 
-    cocoapods {
-        version = "1.0.0"
-        summary = "Some description for the Shared Module"
-        homepage = "Link to the Shared Module homepage"
-        ios.deploymentTarget = "14.1"
-        podfile = project.file("../iosApp/Podfile")
-        framework {
-            baseName = "shared"
-            isStatic = true
-        }
-        extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
+    js(IR) {
+        browser()
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(libs.ktor.client.core)
-                implementation(libs.ktor.client.json)
-                implementation(libs.ktor.client.logging)
-                implementation(libs.ktor.client.content.negotiation)
-                implementation(libs.ktor.client.serialization.json)
-
-                implementation(libs.kotlinx.coroutines.core)
-                implementation(libs.kotlinx.serialization.core)
-
                 implementation(compose.runtime)
                 implementation(compose.foundation)
-                implementation(compose.material)
-                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-                implementation(compose.components.resources)
+                implementation(compose.material3)
+                implementation(compose.materialIconsExtended)
+
+                implementation(libs.molecule.runtime)
+                implementation(libs.decompose)
+                implementation(libs.decompose.compose.multiplatform)
+                implementation(libs.decompose.router)
+                implementation(libs.essenty.parcelable)
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.content.negotiation)
+                implementation(libs.ktor.client.logging)
+                implementation(libs.ktor.serialization.kotlinx.json)
             }
         }
 
@@ -90,15 +66,19 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                api(libs.androidx.activity.compose)
-                api(libs.androidx.appcompat)
-                api(libs.androidx.core)
-
-                implementation(libs.ktor.client.android)
+                implementation(libs.ktor.client.cio)
             }
         }
 
         val androidUnitTest by getting
+
+        val desktopMain by getting {
+            dependencies {
+                implementation(libs.ktor.client.cio)
+            }
+        }
+
+        val desktopTest by getting
 
         val iosX64Main by getting
         val iosArm64Main by getting
@@ -108,8 +88,7 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
-
-            dependencies{
+            dependencies {
                 implementation(libs.ktor.client.darwin)
             }
         }
@@ -124,17 +103,29 @@ kotlin {
             iosSimulatorArm64Test.dependsOn(this)
         }
 
-        val desktopMain by getting {
+        val jsMain by getting {
             dependencies {
-                implementation(compose.desktop.common)
-                implementation(libs.ktor.client.java)
-                implementation(libs.kotlinx.coroutines.swing)
+                implementation(libs.ktor.client.js)
             }
         }
 
-        val desktopTest by getting
+        val jsTest by getting
     }
 }
+
+android {
+    namespace = "dev.reprator.khatabook.shared"
+    compileSdk = 33
+    defaultConfig {
+        minSdk = 24
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
 
 tasks.withType<Test> {
     testLogging {
