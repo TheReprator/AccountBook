@@ -40,7 +40,7 @@ kotlin {
   }
 
   cocoapods {
-    summary = "An accounting application"
+    summary = "Khatabook - An accounting library"
     homepage = "README.md"
     framework {
       baseName = "Khatabook"

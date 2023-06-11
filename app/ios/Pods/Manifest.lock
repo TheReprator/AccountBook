@@ -1,0 +1,16 @@
+PODS:
+  - ios_compose (1.0)
+
+DEPENDENCIES:
+  - ios_compose (from `../ios-compose`)
+
+EXTERNAL SOURCES:
+  ios_compose:
+    :path: "../ios-compose"
+
+SPEC CHECKSUMS:
+  ios_compose: d478d3a2edf3a237f6b8a9e6a11e7465cdb84032
+
+PODFILE CHECKSUM: 459ec67dd1dab892ccb0b249b9c0130a5107a006
+
+COCOAPODS: 1.11.3
