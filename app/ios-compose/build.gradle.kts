@@ -43,7 +43,7 @@ kotlin {
     summary = "Khatabook - An accounting library"
     homepage = "README.md"
     framework {
-      baseName = "Khatabook"
+      baseName = "Khataboook"
       isStatic = true
     }
     version = "1.0"

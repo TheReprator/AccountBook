@@ -1,4 +1,4 @@
-package io.github.xxfast.nytimes.ios.compose
+package dev.reprator.khatabook.ios.compose
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.CompositionLocalProvider

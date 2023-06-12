@@ -1,6 +1,6 @@
 import Foundation
 import SwiftUI
-import Khatabook
+import Khataboook
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

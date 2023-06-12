@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../ios-compose"
 
 SPEC CHECKSUMS:
-  ios_compose: d478d3a2edf3a237f6b8a9e6a11e7465cdb84032
+  ios_compose: 265eb1758526597e179c94f5ff57ede2be4b7e3d
 
 PODFILE CHECKSUM: 459ec67dd1dab892ccb0b249b9c0130a5107a006
 
