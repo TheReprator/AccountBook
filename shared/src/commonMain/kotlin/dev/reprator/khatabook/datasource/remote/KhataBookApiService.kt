@@ -47,7 +47,6 @@ val clientApp = HttpClient {
 
   install(DefaultRequest) {
     url("http://192.168.0.186:8081/")
-    header(HttpHeaders.AccessControlAllowOrigin, "*")
     header(HttpHeaders.ContentType, ContentType.Application.Json)
   }
 }

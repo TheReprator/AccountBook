@@ -25,3 +25,6 @@ To run the application on iPhone device/simulator:
 ### Browser
 Run the browser application: `./gradlew :app:web:jsBrowserDevelopmentRun`
 
+### Issues Pending
+Api fetch not working in web app, if backend application is not running
+delay has been added for desktop app in domain to work
