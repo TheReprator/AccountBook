@@ -14,7 +14,6 @@ import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
-import io.ktor.http.URLProtocol
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
@@ -47,7 +46,8 @@ val clientApp = HttpClient {
   install(Logging) { logger = Logger.SIMPLE }
 
   install(DefaultRequest) {
-    url("http://192.168.0.186:8080/")
+    url("http://192.168.0.186:8081/")
+    header(HttpHeaders.AccessControlAllowOrigin, "*")
     header(HttpHeaders.ContentType, ContentType.Application.Json)
   }
 }
