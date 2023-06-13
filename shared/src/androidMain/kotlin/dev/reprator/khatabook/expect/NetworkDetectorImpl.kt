@@ -16,38 +16,41 @@
 
 @file:Suppress("DEPRECATION")
 
-package dev.reprator.khatabook.connectivity
+package dev.reprator.khatabook.expect
 
 import android.content.Context
 import dev.reprator.khatabook.connectivity.base.ConnectivityProvider
 import dev.reprator.khatabook.util.NetworkDetector
-import kotlinx.coroutines.flow.MutableStateFlow
 
-class NetworkDetectorImpl constructor(
-    private val context: Context, override var isConnected: Boolean = false,
-) : NetworkDetector, ConnectivityProvider.ConnectivityStateListener {
+actual class NetworkDetectorImpl actual constructor(private val context: Context)
+    : NetworkDetector, ConnectivityProvider.ConnectivityStateListener {
+
+    private var networkStatus: Boolean = false
 
     private var isSubscriptionAlreadyAdded = false
 
     private val provider: ConnectivityProvider by lazy { ConnectivityProvider.createProvider(context) }
 
     override fun onStateChange(state: ConnectivityProvider.NetworkState) {
-        isConnected = state.hasInternet()
+        networkStatus = state.hasInternet()
     }
 
     private fun ConnectivityProvider.NetworkState.hasInternet(): Boolean {
         return (this as? ConnectivityProvider.NetworkState.ConnectedState)?.hasInternet == true
     }
 
-    override fun startMonitor() {
+    actual override fun startMonitor() {
         if (isSubscriptionAlreadyAdded)
             return
         isSubscriptionAlreadyAdded = true
         provider.addListener(this)
     }
 
-    override fun stopMonitor() {
+    actual override fun stopMonitor() {
         isSubscriptionAlreadyAdded = false
         provider.removeListener(this)
     }
+
+    actual override val isConnected: Boolean
+        get() = networkStatus
 }

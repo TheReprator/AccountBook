@@ -12,14 +12,19 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import dev.reprator.khatabook.expect.Context
+import dev.reprator.khatabook.expect.NetworkDetectorImpl
 import dev.reprator.khatabook.util.ComposeUiEvent
 import io.github.xxfast.decompose.router.rememberOnRoute
 
 @Composable
-fun SplashScreen() {
+fun SplashScreen(context: Context) {
+
+    val networkDetector = NetworkDetectorImpl(context)
+    networkDetector.startMonitor()
 
     val viewModel: SplashViewModel =
-        rememberOnRoute(SplashViewModel::class) { savedState -> SplashViewModel(savedState) }
+        rememberOnRoute(SplashViewModel::class) { savedState -> SplashViewModel(savedState, networkDetector) }
 
     val model: SplashUiModel by viewModel.models.collectAsState()
 

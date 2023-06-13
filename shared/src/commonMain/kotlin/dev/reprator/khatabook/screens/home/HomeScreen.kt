@@ -5,13 +5,14 @@ import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.slid
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.stackAnimation
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.push
+import dev.reprator.khatabook.expect.Context
 import dev.reprator.khatabook.screens.splash.SplashScreen
 import io.github.xxfast.decompose.router.Router
 import io.github.xxfast.decompose.router.content.RoutedContent
 import io.github.xxfast.decompose.router.rememberRouter
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(context: Context) {
 
   val router: Router<StoryHomeScreen> =
     rememberRouter(StoryHomeScreen::class, listOf(StoryHomeScreen.List))
@@ -21,7 +22,7 @@ fun HomeScreen() {
     animation = stackAnimation(slide())
   ) { screen ->
     when (screen) {
-      StoryHomeScreen.List -> SplashScreen()
+      StoryHomeScreen.List -> SplashScreen(context)
     }
   }
 }

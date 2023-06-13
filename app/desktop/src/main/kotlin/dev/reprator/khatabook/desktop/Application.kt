@@ -10,6 +10,7 @@ import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.extensions.compose.jetbrains.lifecycle.LifecycleController
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
+import dev.reprator.khatabook.expect.DesktopContext
 import dev.reprator.khatabook.screens.home.HomeScreen
 import io.github.xxfast.decompose.LocalComponentContext
 
@@ -30,7 +31,7 @@ fun main() {
     ) {
       CompositionLocalProvider(LocalComponentContext provides rootComponentContext) {
         MaterialTheme {
-          HomeScreen()
+          HomeScreen(DesktopContext)
         }
       }
     }
