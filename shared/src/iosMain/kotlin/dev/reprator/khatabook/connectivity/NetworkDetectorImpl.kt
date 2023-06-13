@@ -21,7 +21,7 @@ import platform.posix.QOS_CLASS_UTILITY
 
 class NetworkDetectorImpl : NetworkDetector {
 
-    override var isConnected: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    override var isConnected: Boolean = false
 
     private var nwMonitor: nw_path_monitor_t = null
     private var monitorQueue: dispatch_queue_t = null
@@ -39,8 +39,8 @@ class NetworkDetectorImpl : NetworkDetector {
             println("vikramAppTest path: ${path}")
             val status: nw_path_status_t = nw_path_get_status(path)
             println("vikramAppTest nw_path_status_t: ${nw_path_status_t}")
-            isConnected.value = nw_path_status_satisfied == status
-            println("vikramAppTest netStatus: ${isConnected.value}")
+            isConnected = nw_path_status_satisfied == status
+            println("vikramAppTest netStatus: ${isConnected}")
         }
 
         nw_path_monitor_start(nwMonitor)

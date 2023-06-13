@@ -24,7 +24,7 @@ import dev.reprator.khatabook.util.NetworkDetector
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class NetworkDetectorImpl constructor(
-    private val context: Context, override var isConnected: MutableStateFlow<Boolean> = MutableStateFlow(false),
+    private val context: Context, override var isConnected: Boolean = false,
 ) : NetworkDetector, ConnectivityProvider.ConnectivityStateListener {
 
     private var isSubscriptionAlreadyAdded = false
@@ -32,7 +32,7 @@ class NetworkDetectorImpl constructor(
     private val provider: ConnectivityProvider by lazy { ConnectivityProvider.createProvider(context) }
 
     override fun onStateChange(state: ConnectivityProvider.NetworkState) {
-        isConnected.value = state.hasInternet()
+        isConnected = state.hasInternet()
     }
 
     private fun ConnectivityProvider.NetworkState.hasInternet(): Boolean {

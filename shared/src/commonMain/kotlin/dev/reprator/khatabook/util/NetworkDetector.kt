@@ -1,9 +1,7 @@
 package dev.reprator.khatabook.util
 
-import kotlinx.coroutines.flow.StateFlow
-
 interface NetworkDetector {
-    val isConnected: StateFlow<Boolean>
+    val isConnected: Boolean
 
     fun startMonitor()
     fun stopMonitor()
