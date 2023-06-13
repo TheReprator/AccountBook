@@ -23,8 +23,8 @@ class NetworkDetectorImpl : NetworkDetector {
 
     override var isConnected: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
-    private var nwMonitor: nw_path_monitor_t ?= null
-    private var monitorQueue: dispatch_queue_t ?= null
+    private var nwMonitor: nw_path_monitor_t = null
+    private var monitorQueue: dispatch_queue_t = null
 
     override fun startMonitor() {
         /*val attrs: dispatch_queue_attr_t = dispatch_queue_attr_make_with_qos_class(
@@ -36,9 +36,11 @@ class NetworkDetectorImpl : NetworkDetector {
         nw_path_monitor_set_queue(nwMonitor, monitorQueue)
 
         nw_path_monitor_set_update_handler(nwMonitor) { path ->
+            println("vikramAppTest path: ${path}")
             val status: nw_path_status_t = nw_path_get_status(path)
+            println("vikramAppTest nw_path_status_t: ${nw_path_status_t}")
             isConnected.value = nw_path_status_satisfied == status
-            println("vikram netStatus: ${isConnected.value}")
+            println("vikramAppTest netStatus: ${isConnected.value}")
         }
 
         nw_path_monitor_start(nwMonitor)
