@@ -33,6 +33,7 @@ kotlin {
     iosSimulatorArm64()
 
     js(IR) {
+        useCommonJs()
         browser()
     }
 

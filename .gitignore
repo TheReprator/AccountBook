@@ -13,3 +13,4 @@ app/iosApp/iosApp.xcworkspace/*
 app/iosApp/iosApp.xcodeproj/*
 !app/iosApp/iosApp.xcodeproj/project.pbxproj
 shared/shared.podspec
+/kotlin-js-store/

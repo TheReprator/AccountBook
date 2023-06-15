@@ -1,7 +1,7 @@
 package dev.reprator.khatabook.data.dataSourceImpl
 
-import dev.reprator.khatabook.TestAppCoroutineDispatchers
 import dev.reprator.khatabook.data.dataSource.SplashRemoteDataSource
+import dev.reprator.khatabook.datasource.remote.KhataBookApiService
 import dev.reprator.khatabook.datasource.remote.SplashDataSourceRemoteImpl
 import dev.reprator.khatabook.datasource.remote.mapper.SplashMapper
 import dev.reprator.khatabook.readTextResource
@@ -28,7 +28,6 @@ class BasicTest {
 
     private lateinit var httpClient: HttpClient
     private lateinit var handlerChannel: Channel<MockRequestHandler>
-    private val testAppCoroutineDispatchers = TestAppCoroutineDispatchers()
 
     @BeforeTest
     fun setup() {
@@ -48,11 +47,12 @@ class BasicTest {
 
 
     @Test
-    fun actualTest() = runTest(testAppCoroutineDispatchers.testCoroutineDispatcher) {
+    fun actualTest() = runTest {
 
         val splashRemote: SplashRemoteDataSource =
-            SplashDataSourceRemoteImpl(httpClient, testAppCoroutineDispatchers, SplashMapper())
+            SplashDataSourceRemoteImpl(KhataBookApiService(httpClient), SplashMapper())
         val responseString = readTextResource("splash.json")
+        println("123vikram $responseString")
 
         handlerChannel.trySend { request ->
             check(request.method == HttpMethod.Get)
@@ -68,7 +68,7 @@ class BasicTest {
         }
 
 
-        val result = splashRemote.splashRemoteDataSource().first()
+        val result = splashRemote.splashRemoteDataSource()
         assertTrue(result is AppSuccess)
         assertTrue(result.data.languageList.first().name =="vikram")
     }
