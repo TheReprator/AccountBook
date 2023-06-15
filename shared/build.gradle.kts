@@ -2,6 +2,7 @@
 
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
 import org.gradle.api.tasks.testing.logging.TestLogEvent.*
+import org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile
 
 plugins {
     kotlin("multiplatform")
@@ -33,8 +34,13 @@ kotlin {
     iosSimulatorArm64()
 
     js(IR) {
-        useCommonJs()
-        browser()
+        browser {
+            testTask {
+                useKarma {
+                    useChromeHeadless()
+                }
+            }
+        }
     }
 
     sourceSets {
@@ -74,9 +80,7 @@ kotlin {
         val androidUnitTest by getting
 
         val desktopMain by getting {
-            dependencies {
-                implementation(libs.ktor.client.cio)
-            }
+            dependsOn(androidMain)
         }
 
         val desktopTest by getting

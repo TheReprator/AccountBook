@@ -1,10 +1,10 @@
 package dev.reprator.khatabook.data.dataSourceImpl
 
+import dev.reprator.khatabook.Resource
 import dev.reprator.khatabook.data.dataSource.SplashRemoteDataSource
 import dev.reprator.khatabook.datasource.remote.KhataBookApiService
 import dev.reprator.khatabook.datasource.remote.SplashDataSourceRemoteImpl
 import dev.reprator.khatabook.datasource.remote.mapper.SplashMapper
-import dev.reprator.khatabook.readTextResource
 import dev.reprator.khatabook.util.AppSuccess
 import dev.reprator.khatabook.util.TestApiClient
 import io.ktor.client.HttpClient
@@ -17,7 +17,6 @@ import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
@@ -51,8 +50,8 @@ class BasicTest {
 
         val splashRemote: SplashRemoteDataSource =
             SplashDataSourceRemoteImpl(KhataBookApiService(httpClient), SplashMapper())
-        val responseString = readTextResource("splash.json")
-        println("123vikram $responseString")
+        val resource = Resource("splash.json")
+        val responseString = resource.readText()
 
         handlerChannel.trySend { request ->
             check(request.method == HttpMethod.Get)
