@@ -9,6 +9,7 @@ plugins {
     id("org.jetbrains.compose")
     id("kotlin-parcelize")
     kotlin("plugin.serialization")
+    id("com.goncalossilva.resources") version libs.versions.resources
 }
 
 // TODO: Remove once a compiler with support for >1.8.21 available
@@ -33,13 +34,7 @@ kotlin {
     iosSimulatorArm64()
 
     js(IR) {
-        browser {
-            testTask {
-                useKarma {
-                    useChromeHeadless()
-                }
-            }
-        }
+        browser()
     }
 
     sourceSets {
@@ -67,6 +62,7 @@ kotlin {
                 implementation(libs.kotlinx.coroutines.test)
                 implementation(kotlin("test"))
                 implementation(libs.ktor.client.mock)
+                implementation(libs.test.resources)
             }
         }
 
@@ -79,7 +75,9 @@ kotlin {
         val androidUnitTest by getting
 
         val desktopMain by getting {
-            dependsOn(androidMain)
+            dependencies {
+                implementation(libs.ktor.client.cio)
+            }
         }
 
         val desktopTest by getting
@@ -130,6 +128,11 @@ android {
     }
 }
 
+tasks.withType<Copy> {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from("$projectDir/src/commonTest/resources")
+    into("${rootProject.buildDir}/js/packages/${rootProject.name}-${project.name}-test/src/commonTest/resources")
+}
 
 tasks.withType<Test> {
     testLogging {
