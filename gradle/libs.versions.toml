@@ -11,6 +11,7 @@ kotlinx-coroutines = "1.7.1"
 kotlinx-serialization = "1.5.1"
 ktor = "2.3.1"
 molecule = "0.9.0"
+resources = "0.3.2"
 
 [libraries]
 agp = { module = "com.android.tools.build:gradle", version.ref = "agp" }
@@ -39,3 +40,4 @@ ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx
 
 molecule-gradle-plugin = { module = "app.cash.molecule:molecule-gradle-plugin", version.ref = "molecule" }
 molecule-runtime = { module = "app.cash.molecule:molecule-runtime", version.ref = "molecule" }
+test-resources = { module = "com.goncalossilva:resources", version.ref = "resources" }
