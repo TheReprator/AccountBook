@@ -28,7 +28,7 @@ Run the browser application: `./gradlew :app:web:jsBrowserDevelopmentRun`
 ## Issues Pending
 
 - [ ]  fetch error in webapp(currently get on loading), if api is not running
-- [ ]  case for js application not running for first time, will start running from 2nd time
+- [ ]  Test case for js browser application not running for first time, will start running from 2nd time
 - [ ]  not working in case of ios
 
 

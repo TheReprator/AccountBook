@@ -13,7 +13,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Khatabook-KMP"
+rootProject.name = "Khatabook"
 
 include(":shared")
 include(":app:android")

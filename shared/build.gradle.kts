@@ -9,7 +9,6 @@ plugins {
     id("org.jetbrains.compose")
     id("kotlin-parcelize")
     kotlin("plugin.serialization")
-    id("com.goncalossilva.resources") version libs.versions.test.resources
     alias(libs.plugins.moko.resources)
 }
 
@@ -36,6 +35,7 @@ kotlin {
 
     js(IR) {
         browser()
+        nodejs()
     }
 
     sourceSets {
@@ -65,7 +65,6 @@ kotlin {
                 implementation(libs.kotlinx.coroutines.test)
                 implementation(kotlin("test"))
                 implementation(libs.ktor.client.mock)
-                implementation(libs.test.resources)
             }
         }
 
@@ -131,11 +130,12 @@ android {
     }
 }
 
-tasks.withType<Copy> {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+val copyTestResourcesForJs = tasks.register<Copy>("copyTestResourcesForJs") {
     from("$projectDir/src/commonTest/resources")
     into("${rootProject.buildDir}/js/packages/${rootProject.name}-${project.name}-test/src/commonTest/resources")
 }
+
+tasks.findByName("jsNodeTest")!!.dependsOn(copyTestResourcesForJs)
 
 tasks.withType<Test> {
     testLogging {
