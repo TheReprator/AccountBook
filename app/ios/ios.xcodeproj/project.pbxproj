@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
-		44A28965531A0B1794CC4349 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87059DAE2D95EAB608061915 /* Pods_ios.framework */; };
 		B9BE96402A37079400F62235 /* Khataboook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9BE963F2A37079400F62235 /* Khataboook.framework */; };
 		B9BE96412A37079400F62235 /* Khataboook.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9BE963F2A37079400F62235 /* Khataboook.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DBCF3E7329C143330035FC22 /* iOSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF3E7229C143330035FC22 /* iOSApplication.swift */; };
@@ -32,13 +31,11 @@
 /* Begin PBXFileReference section */
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7555FF7B242A565900829871 /* Khatabook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Khatabook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7555FF7B242A565900829871 /* AccountBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccountBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		87059DAE2D95EAB608061915 /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9358D64DF4C98DED344869C8 /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
 		9D6DB611722DE0062E497A1B /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		B9BE963F2A37079400F62235 /* Khataboook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Khataboook.framework; path = "../ios-compose/build/cocoapods/framework/Khataboook.framework"; sourceTree = "<group>"; };
-		B9C82FDE2A36760D0056CDCF /* Khatabook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Khatabook.framework; path = "../ios-compose/build/cocoapods/framework/Khatabook.framework"; sourceTree = "<group>"; };
 		DBCF3E7229C143330035FC22 /* iOSApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApplication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -47,7 +44,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44A28965531A0B1794CC4349 /* Pods_ios.framework in Frameworks */,
 				B9BE96402A37079400F62235 /* Khataboook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,8 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				B9BE963F2A37079400F62235 /* Khataboook.framework */,
-				B9C82FDE2A36760D0056CDCF /* Khatabook.framework */,
-				87059DAE2D95EAB608061915 /* Pods_ios.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -86,7 +80,7 @@
 		7555FF7C242A565900829871 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7555FF7B242A565900829871 /* Khatabook.app */,
+				7555FF7B242A565900829871 /* AccountBook.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,7 +124,7 @@
 			);
 			name = ios;
 			productName = ios;
-			productReference = 7555FF7B242A565900829871 /* Khatabook.app */;
+			productReference = 7555FF7B242A565900829871 /* AccountBook.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -336,7 +330,7 @@
 			baseConfigurationReference = 9D6DB611722DE0062E497A1B /* Pods-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ios/Preview Content\"";
 				DEVELOPMENT_TEAM = YT3BAXVWNZ;
@@ -346,7 +340,7 @@
 					"$(PROJECT_DIR)-compose/build/cocoapods/framework",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Khatabook;
+				INFOPLIST_KEY_CFBundleDisplayName = AccountBook;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -354,7 +348,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.reprator.khatabook;
-				PRODUCT_NAME = Khatabook;
+				PRODUCT_NAME = AccountBook;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -365,7 +359,7 @@
 			baseConfigurationReference = 9358D64DF4C98DED344869C8 /* Pods-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ios/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
@@ -375,7 +369,7 @@
 					"$(PROJECT_DIR)-compose/build/cocoapods/framework",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Khatabook;
+				INFOPLIST_KEY_CFBundleDisplayName = AccountBook;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -383,7 +377,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.reprator.khatabook;
-				PRODUCT_NAME = Khatabook;
+				PRODUCT_NAME = AccountBook;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
