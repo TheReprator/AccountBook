@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_loader">लोड हो रहा है</string>
+    <string name="app_error">एक त्रुटि पाई गई</string>
+    <string name="app_empty">डाटा प्राप्त नहीं हुआ</string>
+
+    <string name="splash_first">अपने दैनिक नकद लेनदेन पर नज़र रखें</string>
+    <string name="splash_next">अगला</string>
+    <string name="splash_skip">छोडना</string>
+
+    <string name="splash_last">अपनी पुरानी प्रविष्टियों की जाँच करें और रिपोर्ट डाउनलोड करेंs</string>
+    <string name="splash_start">शुरू हो जाओ</string>
+</resources>

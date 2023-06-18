@@ -57,6 +57,7 @@ kotlin {
                 implementation(libs.ktor.serialization.kotlinx.json)
 
                 implementation(libs.moko.resources)
+                implementation(libs.logger.napier)
             }
         }
 

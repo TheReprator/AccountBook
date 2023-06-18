@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_loader">تحميل</string>
+    <string name="app_error">حدث خطأ</string>
+    <string name="app_empty">لاتوجد بيانات</string>
+
+    <string name="splash_first">تتبع معاملاتك النقدية اليومية</string>
+    <string name="splash_next">التالي</string>
+    <string name="splash_skip">يتخطى</string>
+
+    <string name="splash_last">تحقق من الإدخالات القديمة وقم بتنزيل التقارير</string>
+    <string name="splash_start">البدء</string>
+</resources>
