@@ -12,7 +12,6 @@ class SplashRemoteDataSourceImpl(private val repository: SplashRemoteDataSource,
 ): SplashRepository {
 
     override suspend fun splashData(): AppResult<SplashModal> {
-        println("vikramTEst:  ${networkDetector.isConnected}")
         return if(networkDetector.isConnected)
             repository.splashRemoteDataSource()
         else

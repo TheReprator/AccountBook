@@ -1,6 +1,7 @@
 package dev.reprator.khatabook.screens.splash
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -38,6 +39,8 @@ fun SplashScreen(context: Context) {
             .padding(150.dp)
     ) {
 
+        val inDark = isSystemInDarkTheme()
+        println("vikramTheme: $inDark")
         AnimatedVisibility(visible = model.isLoading) {
             SplashLoader()
         }
