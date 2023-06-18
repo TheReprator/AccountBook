@@ -1,8 +1,7 @@
 package dev.reprator.khatabook
 
-const val RESOURCE_PATH = "./src/commonTest/resources"
-
 /**
+ * https://github.com/goncalossilva/kotlinx-resources
  * Provides access to resource on [path].
  *
  * The path should be relative to the project's directory, such as
