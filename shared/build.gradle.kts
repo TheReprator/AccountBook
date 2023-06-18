@@ -9,7 +9,8 @@ plugins {
     id("org.jetbrains.compose")
     id("kotlin-parcelize")
     kotlin("plugin.serialization")
-    id("com.goncalossilva.resources") version libs.versions.resources
+    id("com.goncalossilva.resources") version libs.versions.test.resources
+    alias(libs.plugins.moko.resources)
 }
 
 // TODO: Remove once a compiler with support for >1.8.21 available
@@ -54,6 +55,8 @@ kotlin {
                 implementation(libs.ktor.client.content.negotiation)
                 implementation(libs.ktor.client.logging)
                 implementation(libs.ktor.serialization.kotlinx.json)
+
+                implementation(libs.moko.resources)
             }
         }
 
