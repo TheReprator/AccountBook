@@ -1,4 +1,4 @@
-package dev.reprator.khatabook.expect
+package dev.reprator.khatabook.impl
 
 import dev.reprator.khatabook.util.NetworkDetector
 import platform.Network.nw_path_get_status
@@ -13,14 +13,14 @@ import platform.Network.nw_path_status_t
 import platform.darwin.dispatch_queue_create
 import platform.darwin.dispatch_queue_t
 
-actual class NetworkDetectorImpl actual constructor(private val context: Context): NetworkDetector {
+class NetworkDetectorImpl constructor(): NetworkDetector {
 
     private var netWorkStatus: Boolean = false
 
     private var nwMonitor: nw_path_monitor_t = null
     private var monitorQueue: dispatch_queue_t = null
 
-    actual override fun startMonitor() {
+    override fun startMonitor() {
         /*val attrs: dispatch_queue_attr_t = dispatch_queue_attr_make_with_qos_class(
             dispatch_queue_serial_t.new(), QOS_CLASS_UTILITY, DISPATCH_QUEUE_PRIORITY_DEFAULT)
         monitorQueue= dispatch_queue_create("com.example.network.monitor", attrs)*/
@@ -32,7 +32,7 @@ actual class NetworkDetectorImpl actual constructor(private val context: Context
         nw_path_monitor_set_update_handler(nwMonitor) { path ->
             println("vikramAppTest path: ${path}")
             val status: nw_path_status_t = nw_path_get_status(path)
-            println("vikramAppTest nw_path_status_t: ${nw_path_status_t}")
+            println("vikramAppTest nw_path_status_t: $nw_path_status_t")
             netWorkStatus = nw_path_status_satisfied == status
             println("vikramAppTest netStatus: ${isConnected}")
         }
@@ -40,10 +40,10 @@ actual class NetworkDetectorImpl actual constructor(private val context: Context
         nw_path_monitor_start(nwMonitor)
     }
 
-    actual override fun stopMonitor() {
+    override fun stopMonitor() {
         nw_path_monitor_cancel(nwMonitor)
     }
 
-    actual override val isConnected: Boolean
+    override val isConnected: Boolean
         get() = netWorkStatus
 }

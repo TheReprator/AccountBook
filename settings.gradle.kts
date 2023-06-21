@@ -13,7 +13,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Khatabook"
+rootProject.name = "AccountBook"
 
 include(":shared")
 include(":app:android")

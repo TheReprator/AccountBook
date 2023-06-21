@@ -7,15 +7,15 @@
   },
   "authors": "",
   "license": "",
-  "summary": "Khatabook - An accounting library",
-  "vendored_frameworks": "build/cocoapods/framework/Khataboook.framework",
+  "summary": "AccountBook - An accounting library",
+  "vendored_frameworks": "build/cocoapods/framework/AccountBoook.framework",
   "libraries": "c++",
   "platforms": {
     "ios": "14.1"
   },
   "pod_target_xcconfig": {
     "KOTLIN_PROJECT_PATH": ":app:ios-compose",
-    "PRODUCT_MODULE_NAME": "Khataboook"
+    "PRODUCT_MODULE_NAME": "AccountBoook"
   },
   "script_phases": [
     {

@@ -12,6 +12,7 @@ molecule = "0.9.0"
 moko-resources = "0.23.0"
 spotless = "6.19.0"
 sqldelight = "2.0.0-rc01"
+koin = "3.4.2"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -53,4 +54,9 @@ molecule-runtime = { module = "app.cash.molecule:molecule-runtime", version.ref 
 
 logger-napier ="io.github.aakira:napier:2.6.1"
 moko-resources = { module = "dev.icerock.moko:resources", version.ref = "moko-resources" }
+moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "moko-resources" }
+
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-test = { module = "io.insert-koin:koin-test", version = "3.4.1" }
 

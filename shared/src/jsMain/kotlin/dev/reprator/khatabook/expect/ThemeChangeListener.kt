@@ -3,7 +3,7 @@ package dev.reprator.khatabook.expect
 import kotlinx.browser.window
 import org.w3c.dom.MediaQueryList
 
-class ThemeChangeListener constructor(private val context: Context) {
+class ThemeChangeListener constructor() {
 
     var theme: Theme = Theme.SYSTEM
 

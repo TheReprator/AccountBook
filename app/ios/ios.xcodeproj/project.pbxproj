@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
-		B9BE96402A37079400F62235 /* Khataboook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9BE963F2A37079400F62235 /* Khataboook.framework */; };
-		B9BE96412A37079400F62235 /* Khataboook.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9BE963F2A37079400F62235 /* Khataboook.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		88459AC5D9346F4AE658FF7E /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C8870EB3BB6B85B6319505 /* Pods_ios.framework */; };
+		B98B87CA2A4366D00045D22B /* AccountBoook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B98B87C92A4366D00045D22B /* AccountBoook.framework */; };
+		B98B87CB2A4366D00045D22B /* AccountBoook.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B98B87C92A4366D00045D22B /* AccountBoook.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DBCF3E7329C143330035FC22 /* iOSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF3E7229C143330035FC22 /* iOSApplication.swift */; };
 /* End PBXBuildFile section */
 
@@ -21,7 +22,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B9BE96412A37079400F62235 /* Khataboook.framework in Embed Frameworks */,
+				B98B87CB2A4366D00045D22B /* AccountBoook.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -35,7 +36,8 @@
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9358D64DF4C98DED344869C8 /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
 		9D6DB611722DE0062E497A1B /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
-		B9BE963F2A37079400F62235 /* Khataboook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Khataboook.framework; path = "../ios-compose/build/cocoapods/framework/Khataboook.framework"; sourceTree = "<group>"; };
+		B1C8870EB3BB6B85B6319505 /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B98B87C92A4366D00045D22B /* AccountBoook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AccountBoook.framework; path = "../ios-compose/build/cocoapods/framework/AccountBoook.framework"; sourceTree = "<group>"; };
 		DBCF3E7229C143330035FC22 /* iOSApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApplication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,7 +46,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9BE96402A37079400F62235 /* Khataboook.framework in Frameworks */,
+				88459AC5D9346F4AE658FF7E /* Pods_ios.framework in Frameworks */,
+				B98B87CA2A4366D00045D22B /* AccountBoook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +65,8 @@
 		64056194F4917A8FC0B5A1FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B9BE963F2A37079400F62235 /* Khataboook.framework */,
+				B98B87C92A4366D00045D22B /* AccountBoook.framework */,
+				B1C8870EB3BB6B85B6319505 /* Pods_ios.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
