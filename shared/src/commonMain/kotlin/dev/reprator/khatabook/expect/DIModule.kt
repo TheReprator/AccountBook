@@ -7,6 +7,10 @@ import dev.reprator.khatabook.datasource.remote.SplashDataSourceRemoteImpl
 import dev.reprator.khatabook.datasource.remote.mapper.SplashMapper
 import dev.reprator.khatabook.domain.repository.SplashRepository
 import dev.reprator.khatabook.domain.usecase.SplashUseCase
+import dev.reprator.khatabook.util.logger.AppLogger
+import dev.reprator.khatabook.util.logger.LoggerImpl
+import io.github.aakira.napier.DebugAntilog
+import io.github.aakira.napier.Napier
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.HttpTimeout
@@ -22,9 +26,13 @@ import kotlinx.serialization.json.Json
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
+import org.koin.core.qualifier.named
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.bind
 import org.koin.dsl.module
+
+
+const val IS_DEBUG_MODE = "isAppInDebug"
 
 internal expect val platformCoreModule : Module
 
@@ -32,6 +40,10 @@ internal expect val platformCoreModule : Module
 //commonMain module
 private val commonCoreModule = module {
     //Add common core module implementations here
+
+    single<AppLogger> {
+        LoggerImpl(get(named(IS_DEBUG_MODE)))
+    }
 
     single<HttpClient> {
         HttpClient {
@@ -86,7 +98,7 @@ val splashModule : Module get() =  module {
 
 
 val coreModule : Module get() =  module {
-    includes(commonCoreModule + platformCoreModule + splashModule)
+    includes( platformCoreModule + commonCoreModule + splashModule)
 }
 
 fun appInitKoin(appDeclaration: KoinAppDeclaration = {}) =

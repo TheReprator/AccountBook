@@ -1,6 +1,7 @@
 package dev.reprator.khatabook.impl
 
 import dev.reprator.khatabook.util.NetworkDetector
+import dev.reprator.khatabook.util.logger.AppLogger
 import platform.Network.nw_path_get_status
 import platform.Network.nw_path_monitor_cancel
 import platform.Network.nw_path_monitor_create
@@ -13,7 +14,7 @@ import platform.Network.nw_path_status_t
 import platform.darwin.dispatch_queue_create
 import platform.darwin.dispatch_queue_t
 
-class NetworkDetectorImpl constructor(): NetworkDetector {
+class NetworkDetectorImpl constructor(private val logger: AppLogger): NetworkDetector {
 
     private var netWorkStatus: Boolean = false
 
@@ -30,11 +31,11 @@ class NetworkDetectorImpl constructor(): NetworkDetector {
         nw_path_monitor_set_queue(nwMonitor, monitorQueue)
 
         nw_path_monitor_set_update_handler(nwMonitor) { path ->
-            println("vikramAppTest path: ${path}")
+            logger.e { "vikramAppTest path: $path" }
             val status: nw_path_status_t = nw_path_get_status(path)
-            println("vikramAppTest nw_path_status_t: $nw_path_status_t")
+            logger.e { "vikramAppTest nw_path_status_t: $nw_path_status_t" }
             netWorkStatus = nw_path_status_satisfied == status
-            println("vikramAppTest netStatus: ${isConnected}")
+            logger.e { "vikramAppTest netStatus: $isConnected" }
         }
 
         nw_path_monitor_start(nwMonitor)

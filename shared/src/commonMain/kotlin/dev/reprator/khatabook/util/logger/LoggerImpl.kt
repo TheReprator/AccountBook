@@ -1,8 +1,15 @@
 package dev.reprator.khatabook.util.logger
 
+import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.Napier
 
-class TimberLogger : Logger {
+class LoggerImpl(private val isDebug: Boolean) : AppLogger {
+
+    init {
+        if(isDebug)
+            Napier.base(DebugAntilog())
+    }
+
     override fun v(throwable: Throwable?, message: () -> String) {
         Napier.v(throwable=throwable, message = message())
     }
