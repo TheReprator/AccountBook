@@ -10,14 +10,17 @@ import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.extensions.compose.jetbrains.lifecycle.LifecycleController
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
-import dev.reprator.khatabook.expect.DesktopContext
+import dev.reprator.khatabook.expect.appInitKoin
 import dev.reprator.khatabook.screens.home.HomeScreen
+import dev.reprator.khatabook.util.NetworkDetector
 import io.github.xxfast.decompose.LocalComponentContext
 
 @OptIn(ExperimentalDecomposeApi::class)
 fun main() {
   val lifecycle = LifecycleRegistry()
   val rootComponentContext = DefaultComponentContext(lifecycle = lifecycle)
+
+  startKoin()
 
   application {
     val windowState: WindowState = rememberWindowState()
@@ -31,9 +34,19 @@ fun main() {
     ) {
       CompositionLocalProvider(LocalComponentContext provides rootComponentContext) {
         MaterialTheme {
-          HomeScreen(DesktopContext)
+          HomeScreen()
         }
       }
     }
   }
+}
+
+
+fun startKoin() {
+  val koinApp = appInitKoin {
+
+  }
+
+  val networkDetector = koinApp.koin.get<NetworkDetector>()
+  networkDetector.startMonitor()
 }

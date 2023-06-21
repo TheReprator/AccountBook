@@ -25,7 +25,27 @@ To run the application on iPhone device/simulator:
 ### Browser
 Run the browser application: `./gradlew :app:web:jsBrowserDevelopmentRun`
 
-### Issues Pending
-1)Api fetch error in webapp(currently get on loading), if api is not running
-2)Test case for js application not running for first time, will start running from 2nd time
-3)Test not working in case of ios
+## Issues Pending
+
+- [ ]  fetch error in webapp(currently get on loading), if api is not running
+- [ ]  Test case for js browser application not running for first time, will start running from 2nd time
+- [ ]  not working in case of ios
+
+
+## License
+
+```
+Copyright Sasikanth Miriyampalli
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```

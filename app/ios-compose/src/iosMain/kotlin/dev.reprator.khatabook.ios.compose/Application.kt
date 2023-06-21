@@ -5,7 +5,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.window.ComposeUIViewController
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
-import dev.reprator.khatabook.expect.IosContext
 import dev.reprator.khatabook.screens.home.HomeScreen
 import io.github.xxfast.decompose.LocalComponentContext
 import platform.UIKit.UIViewController
@@ -16,7 +15,7 @@ fun Main(): UIViewController = ComposeUIViewController {
 
   CompositionLocalProvider(LocalComponentContext provides rootComponentContext) {
     MaterialTheme {
-      HomeScreen(IosContext)
+      HomeScreen()
     }
   }
 }

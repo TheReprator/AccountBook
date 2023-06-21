@@ -1,0 +1,13 @@
+<resources>
+    <string name="appName">AccountBook</string>
+    <string name="app_loader">Loading</string>
+    <string name="app_error">An error occurred</string>
+    <string name="app_empty">No data found</string>
+
+    <string name="splash_first">Keep track of your daily cash transactions</string>
+    <string name="splash_next">Next</string>
+    <string name="splash_skip">Skip</string>
+
+    <string name="splash_last">Check your older entries and download reports</string>
+    <string name="splash_start">Get Started</string>
+</resources>

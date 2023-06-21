@@ -1,6 +1,6 @@
 package dev.reprator.khatabook.data.dataSourceImpl
 
-import com.goncalossilva.resources.Resource
+import dev.reprator.khatabook.ResourceTest
 import dev.reprator.khatabook.data.dataSource.SplashRemoteDataSource
 import dev.reprator.khatabook.datasource.remote.KhataBookApiService
 import dev.reprator.khatabook.datasource.remote.SplashDataSourceRemoteImpl
@@ -47,10 +47,9 @@ class BasicTest {
 
     @Test
     fun actualTest() = runTest {
-
         val splashRemote: SplashRemoteDataSource =
             SplashDataSourceRemoteImpl(KhataBookApiService(httpClient), SplashMapper())
-        val resource = Resource("src/commonTest/resources/splash.json")
+        val resource = ResourceTest("src/commonTest/resources/splash.json")
         val responseString = resource.readText()
 
         handlerChannel.trySend { request ->

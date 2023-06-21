@@ -9,7 +9,6 @@ plugins {
     id("org.jetbrains.compose")
     id("kotlin-parcelize")
     kotlin("plugin.serialization")
-    id("com.goncalossilva.resources") version libs.versions.resources
 }
 
 // TODO: Remove once a compiler with support for >1.8.21 available
@@ -35,6 +34,7 @@ kotlin {
 
     js(IR) {
         browser()
+        nodejs()
     }
 
     sourceSets {
@@ -54,6 +54,9 @@ kotlin {
                 implementation(libs.ktor.client.content.negotiation)
                 implementation(libs.ktor.client.logging)
                 implementation(libs.ktor.serialization.kotlinx.json)
+
+                implementation(libs.logger.napier)
+                implementation(libs.koin.core)
             }
         }
 
@@ -62,7 +65,7 @@ kotlin {
                 implementation(libs.kotlinx.coroutines.test)
                 implementation(kotlin("test"))
                 implementation(libs.ktor.client.mock)
-                implementation(libs.test.resources)
+                implementation(libs.koin.test)
             }
         }
 
@@ -128,11 +131,12 @@ android {
     }
 }
 
-tasks.withType<Copy> {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+val copyTestResourcesForJs = tasks.register<Copy>("copyTestResourcesForJs") {
     from("$projectDir/src/commonTest/resources")
     into("${rootProject.buildDir}/js/packages/${rootProject.name}-${project.name}-test/src/commonTest/resources")
 }
+
+tasks.findByName("jsNodeTest")!!.dependsOn(copyTestResourcesForJs)
 
 tasks.withType<Test> {
     testLogging {

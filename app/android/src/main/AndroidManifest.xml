@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -7,6 +8,7 @@
         android:label="@string/appName"
         android:supportsRtl="true"
         android:icon="@mipmap/ic_launcher"
+        android:name=".AccountBook"
         android:enableOnBackInvokedCallback="true"
         android:theme="@style/AppTheme">
         <activity

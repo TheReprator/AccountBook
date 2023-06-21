@@ -40,10 +40,10 @@ kotlin {
   }
 
   cocoapods {
-    summary = "Khatabook - An accounting library"
+    summary = "AccountBook - An accounting library"
     homepage = "README.md"
     framework {
-      baseName = "Khataboook"
+      baseName = "AccountBoook"
       isStatic = true
     }
     version = "1.0"

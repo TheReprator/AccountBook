@@ -14,3 +14,5 @@ app/iosApp/iosApp.xcodeproj/*
 !app/iosApp/iosApp.xcodeproj/project.pbxproj
 shared/shared.podspec
 /kotlin-js-store/
+/shared/karma.config.d/
+/shared/webpack.config.d/

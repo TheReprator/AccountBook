@@ -47,4 +47,6 @@ dependencies {
   implementation(libs.decompose)
   implementation(libs.decompose.router)
   implementation(libs.androidx.activity.compose)
+
+  implementation(libs.koin.android)
 }
