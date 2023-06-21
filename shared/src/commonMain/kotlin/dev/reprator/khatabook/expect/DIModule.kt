@@ -33,6 +33,7 @@ import org.koin.dsl.module
 
 
 const val IS_DEBUG_MODE = "isAppInDebug"
+const val VIEWMODEL_DEFAULT_DISPATCHER = "defaultDispatcher"
 
 internal expect val platformCoreModule : Module
 

@@ -12,7 +12,7 @@ import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
 import org.koin.dsl.koinApplication
 
-class SplashViewModel(savedState: SavedStateHandle) : MoleculeViewModel<ComposeUiEvent, SplashUiModel>(), KoinComponent {
+class SplashViewModel(savedState: SavedStateHandle) : MoleculeViewModel<ComposeUiEvent, SplashUiModel>() {
 
     private val useCase: SplashUseCase by inject()
 
