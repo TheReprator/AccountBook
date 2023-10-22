@@ -1,7 +1,7 @@
 package dev.reprator.khatabook.util.abstract
 
 import androidx.compose.runtime.Composable
-import app.cash.molecule.RecompositionClock
+import app.cash.molecule.RecompositionMode
 import app.cash.molecule.launchMolecule
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -14,7 +14,7 @@ abstract class MoleculeViewModel<Event, Model> : ViewModel() {
     private val events = MutableSharedFlow<Event>(extraBufferCapacity = 20)
 
     val models: StateFlow<Model> by lazy(LazyThreadSafetyMode.NONE) {
-        launchMolecule(clock = RecompositionClock.Immediate) {
+        launchMolecule(mode = RecompositionMode.Immediate) {
             models(events)
         }
     }

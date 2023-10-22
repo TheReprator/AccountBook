@@ -11,19 +11,18 @@ plugins {
     kotlin("plugin.serialization")
 }
 
-// TODO: Remove once a compiler with support for >1.8.21 available
 compose {
-    kotlinCompilerPlugin.set(dependencies.compiler.forKotlin("1.8.20"))
-    kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.8.21")
+    kotlinCompilerPlugin.set(dependencies.compiler.forKotlin("1.9.0"))
+    kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.9.10")
 }
 
 kotlin {
-    android()
+    androidTarget()
 
     jvm("desktop") {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "15"
+                jvmTarget = "17"
             }
         }
     }
@@ -120,7 +119,16 @@ kotlin {
 
 android {
     namespace = "dev.reprator.khatabook.shared"
-    compileSdk = 33
+    compileSdk = 34
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.3"
+    }
+
     defaultConfig {
         minSdk = 24
     }
@@ -133,7 +141,7 @@ android {
 
 val copyTestResourcesForJs = tasks.register<Copy>("copyTestResourcesForJs") {
     from("$projectDir/src/commonTest/resources")
-    into("${rootProject.buildDir}/js/packages/${rootProject.name}-${project.name}-test/src/commonTest/resources")
+    into("${rootProject.layout.buildDirectory}/js/packages/${rootProject.name}-${project.name}-test/src/commonTest/resources")
 }
 
 tasks.findByName("jsNodeTest")!!.dependsOn(copyTestResourcesForJs)

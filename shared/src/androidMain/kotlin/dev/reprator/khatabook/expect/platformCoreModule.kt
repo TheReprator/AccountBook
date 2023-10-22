@@ -1,9 +1,9 @@
 package dev.reprator.khatabook.expect
 
 import app.cash.molecule.AndroidUiDispatcher
-import com.arkivanov.decompose.BuildConfig
 import dev.reprator.khatabook.impl.NetworkDetectorImpl
 import dev.reprator.khatabook.util.NetworkDetector
+import io.github.aakira.napier.BuildConfig
 import org.koin.core.module.Module
 import org.koin.core.qualifier.named
 import org.koin.dsl.bind

@@ -11,11 +11,11 @@ To run the application on android device/emulator:
 - open project in Android Studio and run imported android run configuration
 
 To build the application bundle:
-- run `./gradlew :composeApp:assembleDebug`
+- run `./gradlew :app:android:assembleDebug`
 - find `.apk` file in `composeApp/build/outputs/apk/debug/composeApp-debug.apk`
 
 ### Desktop
-Run the desktop application: `./gradlew :composeApp:run`
+Run the desktop application: `./gradlew :app:desktop:run`
 
 ### iOS
 To run the application on iPhone device/simulator:

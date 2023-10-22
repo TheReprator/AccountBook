@@ -6,19 +6,19 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
-import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.extensions.compose.jetbrains.lifecycle.LifecycleController
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import dev.reprator.khatabook.expect.appInitKoin
 import dev.reprator.khatabook.screens.home.HomeScreen
 import dev.reprator.khatabook.util.NetworkDetector
-import io.github.xxfast.decompose.LocalComponentContext
+import io.github.xxfast.decompose.router.LocalRouterContext
+import io.github.xxfast.decompose.router.RouterContext
 
 @OptIn(ExperimentalDecomposeApi::class)
 fun main() {
   val lifecycle = LifecycleRegistry()
-  val rootComponentContext = DefaultComponentContext(lifecycle = lifecycle)
+  val rootComponentContext = RouterContext(lifecycle = lifecycle)
 
   startKoin()
 
@@ -32,7 +32,7 @@ fun main() {
       state = windowState,
       onCloseRequest = { exitApplication() }
     ) {
-      CompositionLocalProvider(LocalComponentContext provides rootComponentContext) {
+      CompositionLocalProvider(LocalRouterContext provides rootComponentContext) {
         MaterialTheme {
           HomeScreen()
         }

@@ -1,7 +1,5 @@
 @file:OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
 
-import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
-
 plugins {
   id("com.android.application")
   kotlin("android")
@@ -10,12 +8,12 @@ plugins {
 
 android {
   namespace = "dev.reprator.khatabook.android"
-  compileSdk = 33
+  compileSdk = 34
 
   defaultConfig {
     applicationId = "dev.reprator.khatabook.android"
     minSdk = 24
-    targetSdk = 33
+    targetSdk = 34
     versionCode = 1
     versionName = "1.0"
   }
@@ -24,16 +22,20 @@ android {
     compose = true
   }
 
+  composeOptions {
+    kotlinCompilerExtensionVersion = "1.5.3"
+  }
+
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
   }
 }
 
-// TODO: Remove once a compiler with support for >1.8.21 available
+// TODO: Remove once a compiler with support for >1.9.10 available
 compose {
-  kotlinCompilerPlugin.set(dependencies.compiler.forKotlin("1.8.20"))
-  kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.8.21")
+  kotlinCompilerPlugin.set(dependencies.compiler.forKotlin("1.9.0"))
+  kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.9.10")
 }
 
 dependencies {

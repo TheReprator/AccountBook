@@ -12,7 +12,9 @@ import io.github.xxfast.decompose.router.rememberRouter
 fun HomeScreen() {
 
   val router: Router<StoryHomeScreen> =
-    rememberRouter(StoryHomeScreen::class, listOf(StoryHomeScreen.List))
+    rememberRouter(StoryHomeScreen::class, initialStack = {
+      listOf(StoryHomeScreen.List)
+    })
 
   RoutedContent(
     router = router,

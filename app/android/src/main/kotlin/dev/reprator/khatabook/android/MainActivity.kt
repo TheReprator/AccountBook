@@ -9,11 +9,11 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
-import com.arkivanov.decompose.DefaultComponentContext
-import com.arkivanov.decompose.defaultComponentContext
 import dev.reprator.khatabook.screens.home.HomeScreen
 import dev.reprator.khatabook.util.NetworkDetector
-import io.github.xxfast.decompose.LocalComponentContext
+import io.github.xxfast.decompose.router.LocalRouterContext
+import io.github.xxfast.decompose.router.RouterContext
+import io.github.xxfast.decompose.router.defaultRouterContext
 import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
@@ -24,12 +24,12 @@ class MainActivity : ComponentActivity() {
     super.onCreate(savedInstanceState)
 
     WindowCompat.setDecorFitsSystemWindows(window, false)
-    val rootComponentContext: DefaultComponentContext = defaultComponentContext()
+    val rootRouterContext: RouterContext = defaultRouterContext()
 
     networkDetector.startMonitor()
 
     setContent {
-      CompositionLocalProvider(LocalComponentContext provides rootComponentContext) {
+      CompositionLocalProvider(LocalRouterContext provides rootRouterContext) {
         NyTimesTheme {
           Surface(
             modifier = Modifier.fillMaxSize(),
