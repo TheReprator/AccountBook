@@ -1,8 +1,11 @@
 # Compose Multiplatform Application
 
+## Github Actions
+- https://akjaw.com/kotlin-multiplatform-github-actions-ci-verification-labels/
+
 ## Before running!
 - check your system with [KDoctor](https://github.com/Kotlin/kdoctor)
-- install JDK 8 on your machine
+- install JDK 17 on your machine
 - add `local.properties` file to the project root and set a path to Android SDK there
 - run `./gradlew podInstall` in the project root
 
