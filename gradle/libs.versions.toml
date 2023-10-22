@@ -1,5 +1,5 @@
 [versions]
-agp = "8.0.2"
+agp = "8.1.2"
 androidx-activity-compose="1.7.2"
 compose-multiplatform = "1.4.0"
 decompose = "2.0.0-compose-experimental-beta-01"
