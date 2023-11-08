@@ -11,11 +11,6 @@ plugins {
     kotlin("plugin.serialization")
 }
 
-compose {
-    kotlinCompilerPlugin.set(dependencies.compiler.forKotlin("1.9.0"))
-    kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.9.10")
-}
-
 kotlin {
     androidTarget()
 

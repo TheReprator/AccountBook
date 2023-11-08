@@ -13,6 +13,7 @@ fun Main(): UIViewController = ComposeUIViewController {
   val lifecycle = LifecycleRegistry()
   val rootComponentContext = RouterContext(lifecycle = lifecycle)
 
+  AppInitializer().starOperation()
   CompositionLocalProvider(LocalRouterContext provides rootComponentContext) {
     MaterialTheme {
       HomeScreen()

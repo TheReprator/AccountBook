@@ -9,7 +9,9 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import org.koin.dsl.module
 import kotlin.coroutines.CoroutineContext
+import kotlin.experimental.ExperimentalNativeApi
 
+@OptIn(ExperimentalNativeApi::class)
 internal actual val platformCoreModule: Module = module {
     single<Boolean>(named(IS_DEBUG_MODE)) { Platform.isDebugBinary }
     singleOf(::NetworkDetectorImpl) bind NetworkDetector::class

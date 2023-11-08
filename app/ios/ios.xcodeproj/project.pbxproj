@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
-		88459AC5D9346F4AE658FF7E /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C8870EB3BB6B85B6319505 /* Pods_ios.framework */; };
+		93CD4BC2F33579CEBAD5FC36 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D6DF4DF7B9DE07EA70A98F /* Pods_ios.framework */; };
 		B98B87CA2A4366D00045D22B /* AccountBoook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B98B87C92A4366D00045D22B /* AccountBoook.framework */; };
 		B98B87CB2A4366D00045D22B /* AccountBoook.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B98B87C92A4366D00045D22B /* AccountBoook.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DBCF3E7329C143330035FC22 /* iOSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF3E7229C143330035FC22 /* iOSApplication.swift */; };
@@ -32,11 +32,11 @@
 /* Begin PBXFileReference section */
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		545CD77B196E891D9A38120F /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
+		57D6DF4DF7B9DE07EA70A98F /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF7B242A565900829871 /* AccountBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccountBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9358D64DF4C98DED344869C8 /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
-		9D6DB611722DE0062E497A1B /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
-		B1C8870EB3BB6B85B6319505 /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		993F1DCF64D73EED36F04402 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		B98B87C92A4366D00045D22B /* AccountBoook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AccountBoook.framework; path = "../ios-compose/build/cocoapods/framework/AccountBoook.framework"; sourceTree = "<group>"; };
 		DBCF3E7229C143330035FC22 /* iOSApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApplication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,8 +46,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88459AC5D9346F4AE658FF7E /* Pods_ios.framework in Frameworks */,
 				B98B87CA2A4366D00045D22B /* AccountBoook.framework in Frameworks */,
+				93CD4BC2F33579CEBAD5FC36 /* Pods_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,7 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				B98B87C92A4366D00045D22B /* AccountBoook.framework */,
-				B1C8870EB3BB6B85B6319505 /* Pods_ios.framework */,
+				57D6DF4DF7B9DE07EA70A98F /* Pods_ios.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -103,8 +103,8 @@
 		C3D1332407ADBAF3B3D4D332 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9D6DB611722DE0062E497A1B /* Pods-ios.debug.xcconfig */,
-				9358D64DF4C98DED344869C8 /* Pods-ios.release.xcconfig */,
+				993F1DCF64D73EED36F04402 /* Pods-ios.debug.xcconfig */,
+				545CD77B196E891D9A38120F /* Pods-ios.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -116,11 +116,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7555FFA5242A565B00829871 /* Build configuration list for PBXNativeTarget "ios" */;
 			buildPhases = (
-				AC0A36DCC46BB3D82A048D63 /* [CP] Check Pods Manifest.lock */,
+				2A7BD94196DE9045B71A5B61 /* [CP] Check Pods Manifest.lock */,
 				7555FF77242A565900829871 /* Sources */,
 				7555FF79242A565900829871 /* Resources */,
 				75BDFB2E9C44FA0FA52C80A1 /* Frameworks */,
 				B9BE96422A37079400F62235 /* Embed Frameworks */,
+				73BEA54B0BBCF4E98BC22703 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -177,7 +178,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AC0A36DCC46BB3D82A048D63 /* [CP] Check Pods Manifest.lock */ = {
+		2A7BD94196DE9045B71A5B61 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -197,6 +198,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73BEA54B0BBCF4E98BC22703 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ios/Pods-ios-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ios/Pods-ios-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ios/Pods-ios-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -331,13 +349,13 @@
 		};
 		7555FFA6242A565B00829871 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D6DB611722DE0062E497A1B /* Pods-ios.debug.xcconfig */;
+			baseConfigurationReference = 993F1DCF64D73EED36F04402 /* Pods-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ios/Preview Content\"";
-				DEVELOPMENT_TEAM = YT3BAXVWNZ;
+				DEVELOPMENT_TEAM = M45344JR46;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -360,13 +378,14 @@
 		};
 		7555FFA7242A565B00829871 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9358D64DF4C98DED344869C8 /* Pods-ios.release.xcconfig */;
+			baseConfigurationReference = 545CD77B196E891D9A38120F /* Pods-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ios/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M45344JR46;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -382,6 +401,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.reprator.khatabook;
 				PRODUCT_NAME = AccountBook;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
