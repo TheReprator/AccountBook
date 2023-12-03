@@ -3,7 +3,7 @@ description: Sets up the Java and Gradle
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-java@v3
+    - uses: actions/setup-java@v4
       with:
         distribution: "zulu"
         java-version: "17"
